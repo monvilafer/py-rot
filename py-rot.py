@@ -14,14 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#IMPORTS
 import gui
 import sys
 from PyQt4.QtCore import *
 from PyQt4 import QtCore,QtGui
 from PyQt4.QtGui import QApplication,QDialog,QMainWindow
 
-#Load GUI files
-#ui = uic.loadUiType("main.ui")[0]
+#Graphical Interface
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -132,9 +132,10 @@ class Ui_MainWindow(object):
         self.actionEdit_alphabet.setText(_translate("MainWindow", "Edit alphabet", None))
         self.actionAbout_Creator.setText(_translate("MainWindow", "Information", None))
 
+#Main class
 class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
     def __init__(self,parent = None):
-        QtGui.QMainWindow.__init__(self,parent) #Superclass needed to initialize the remaining elements
+        QtGui.QMainWindow.__init__(self,parent) #Superclass needed to initialize the all the elements
         self.setupUi(self)
         self.abc = [
                     '1','2','3','4','5','6','7','8','9','0',
@@ -151,16 +152,11 @@ class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
         self.trye = []
         self.cipher = []
         self.result = []
-
-
+        
         self.decode_btn.clicked.connect(self.decode)
-
         self.encode_btn.clicked.connect(self.encode)
         self.menuAbout.hovered.connect(self.credits)
-
-    def credits(self):
-        print 'SEH, CREDITOS'
-
+        
     def encode(self):
         self.text = self.input.toPlainText()
         self.ROT = int(self.index_selector.value())
@@ -169,11 +165,10 @@ class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
                 self.text_list.append(str(p))
                 #print 'text_list = ',self.text_list
                 if (len(self.text) == len(self.text_list)):
-
                     self.generate_encode(self.text_list,self.ROT)
-
                 else:
                     pass
+                 
     def decode(self):
         self.text = self.input.toPlainText()
         self.ROT = -int(self.index_selector.value())
@@ -204,7 +199,6 @@ class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
                                    self.cipher.append(char)
 
                                    if len(self.trye) == len(self.cipher):
-
                                        self.def_encode(self.cipher)
                                    else:
                                         pass
@@ -234,7 +228,6 @@ class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
                                     self.result = []
                                 else:
                                     pass
-
 
         except IndexError:
             pass
