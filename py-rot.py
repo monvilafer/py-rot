@@ -135,7 +135,7 @@ class Ui_MainWindow(object):
 #Main class
 class MainWindow(QtGui.QMainWindow,Ui_MainWindow,object):
     def __init__(self,parent = None):
-        QtGui.QMainWindow.__init__(self,parent) #Superclass needed to initialize the all the elements
+        QtGui.QMainWindow.__init__(self,parent) 
         self.setupUi(self)
         self.abc = [
                     '1','2','3','4','5','6','7','8','9','0',
